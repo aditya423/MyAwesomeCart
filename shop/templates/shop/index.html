@@ -91,7 +91,8 @@
     {% endblock %}
 
     {% block js %}
-      <script>
+    
+    <script>
     
         if(localStorage.getItem('cart') == null){
           var cart = {};
@@ -116,5 +117,7 @@
 
         $('#popcart').popover();
         document.getElementById("popcart").setAttribute('data-content', '<h5>Here are your items</h5>');
+        
       </script>
+
     {% endblock %}
