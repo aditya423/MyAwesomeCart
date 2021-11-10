@@ -101,7 +101,7 @@ if (localStorage.getItem('cart') == null) {
 
 // If the add to cart button is clicked, add/increment the item
 //$('.cart').click(function() {
-    $('.divpr').on('click', 'button.cart', function(){
+$('.divpr').on('click', 'button.cart', function(){
     var idstr = this.id.toString();
     if (cart[idstr] != undefined) {
         qty = cart[idstr][0] + 1;
@@ -113,7 +113,6 @@ if (localStorage.getItem('cart') == null) {
 
     }
     updateCart(cart);
-
 });
 
 //Add Popover to cart
