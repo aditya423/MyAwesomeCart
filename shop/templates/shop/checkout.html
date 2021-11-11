@@ -6,17 +6,8 @@
         <h2>Step 1 - My Awesome Cart Express Checkout - Review Your Cart Items</h2>
         <div class="my-4">
             <ul class="list-group" id="items">
-            </ul>
-
-            <nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalPrice"></span></b>. Enter your details below & place your order. Thanks for using My Awesome Cart!</li>
-  </ol>
-</nav>
-
-
-
             
+            </ul>
         </div>
     </div>
     <div class="col my-4">
@@ -78,13 +69,12 @@ var sum = 0;
 var totalPrice = 0;
 
 if ($.isEmptyObject(cart)) {
-    //if object is empty
     mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
     $('#items').append(mystr);
 } else {
     for (item in cart) {
-        let name = cart[item][1];
         let qty = cart[item][0];
+        let name = cart[item][1];
         let itemPrice = cart[item][2];
         sum = sum + qty;
         totalPrice = totalPrice + qty* itemPrice;
@@ -93,11 +83,19 @@ if ($.isEmptyObject(cart)) {
                     <span class="badge badge-primary badge-pill">${qty}</span>
                 </li>`
         $('#items').append(mystr);
+
     }
 
 }
 
 document.getElementById('cart').innerHTML = sum;
+$('#itemsJson').val(JSON.stringify(cart));
+
+{% if thank %}
+alert('Thanks for ordering with us! Your order id is {{id}}. Use it to track your order using our order tracker')
+localStorage.clear();
+document.location = "/shop";
+{% endif %}
 
 </script>
 {% endblock %}
