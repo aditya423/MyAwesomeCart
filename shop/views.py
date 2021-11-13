@@ -20,6 +20,7 @@ def about(request):
     return render(request, 'shop/about.html')
 
 def contact(request):
+    thank = False
     if request.method == "POST":
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
